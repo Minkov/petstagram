@@ -24,7 +24,7 @@ SECRET_KEY = 'm32$u#l4o694t^9g1v!5idy&wf0euddr34fsc9mj%v!%r%f!7*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
-
+print(DEBUG)
 # localhost 127.0.0.1
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
