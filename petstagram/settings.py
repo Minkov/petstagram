@@ -14,6 +14,7 @@ from os.path import join
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import cloudinary
 import django_heroku
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +29,7 @@ SECRET_KEY = 'm32$u#l4o694t^9g1v!5idy&wf0euddr34fsc9mj%v!%r%f!7*'
 DEBUG = os.environ.get('DEBUG', True)
 print(DEBUG)
 # localhost 127.0.0.1
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 
 # Application definition
 
@@ -36,6 +37,8 @@ INSTALLED_APPS = [
     'common',
     'pets',
     'accounts',
+
+    'cloudinary',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -82,11 +85,11 @@ WSGI_APPLICATION = 'petstagram.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': os.environ.get('DB_NAME', 'petstagram'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 
@@ -163,5 +166,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
+
+cloudinary.config(
+    cloud_name="hkzmr4jws",
+    api_key="323343533786975",
+    api_secret="2P86LmMSSE39hltOKXf2lCrUrg0"
+)
 
 django_heroku.settings(locals())
