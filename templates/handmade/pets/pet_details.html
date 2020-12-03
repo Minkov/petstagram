@@ -1,0 +1,38 @@
+{% extends 'shared/../shared/site.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/details-pet.css' %}">
+{% endblock %}
+
+{% block site_content %}
+    <div class="pet-image">
+        <img src="{{ pet.image_url }}" alt="image of {{ pet.name }}"/>
+    </div>
+    <div class="pet-info">
+        <ul class="list-pet-details list-horizontal">
+            <li class="list-item">
+                <span class="underline"> Type:</span> {{ pet.type }}
+            </li>
+            <li class="list-item">
+                <span class="underline"> Name:</span> {{ pet.name }}
+            </li>
+            <li class="list-item">
+                <span class="underline"> Age:</span> {{ pet.age }}
+            </li>
+        </ul>
+        <p>
+            Description: {{ pet.description }}
+        </p>
+        <div class="pet-buttons">
+            {#            <a class="button button-blue" href="{% url 'like pet' pet.id %}">Like</a>#}
+            <a href="{% url 'like pet' pet.id %}">
+                {% if pet.is_liked %}
+                {% else %}
+                    <i class="far fa-heart"></i>
+                {% endif %}
+            </a>
+        </div>
+        Likes: {{ pet.like_set.count }}
+    </div>
+{% endblock %}

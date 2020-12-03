@@ -1,0 +1,87 @@
+body {
+    font-size: 16px;
+}
+
+section header {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    margin: 25px 0;
+    padding-bottom: 25px;
+}
+
+.list-horizontal .list-item {
+    display: inline-block;
+}
+
+.row {
+    display: flex;
+}
+
+.row .col {
+    flex: 50%;
+}
+
+.button {
+    display: inline-block;
+
+    padding: 5px 15px;
+    border-style: none;
+    border-radius: 3px;
+
+    font-size: 16px;
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.button:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+    cursor: pointer;
+}
+
+.button.button-blue {
+    background-color: blue;
+}
+
+.site-nav {
+    background-color: rgb(248, 249, 250);
+}
+
+.site-nav .list-item {
+    padding: 15px 5px;
+}
+
+.site-nav .list-item:first-of-type {
+    margin-left: 10px;
+}
+
+.banner {
+    height: 500px;
+
+    padding: 15px 15px 15px 15px;
+
+    background-color: #e9ecef;
+}
+
+.banner:before {
+    background-image: url('/static/animals_banner.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    content: '';
+    height: 300px;
+}
+
+#root {
+    width: 1046px;
+    margin: 0 auto;
+}
+
+.pet-buttons {
+    padding-top: 10px;
+}
+
+.underline {
+    text-decoration: underline;
+}

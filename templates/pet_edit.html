@@ -1,0 +1,26 @@
+{% extends 'shared/site.html' %}
+{% block site_content %}
+    <h1 class="text-center">Edit pet photo</h1>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form method="post" action="{% url 'edit pet' pet.pk %}" class="furniture-form" enctype="multipart/form-data">
+                {{ form }}
+                {% csrf_token %}
+                <img id="img_preview" src="{{ pet.image_url }}" class="w-50 rounded mx-auto d-block"/>
+                <button class="btn btn-primary mt-2" type="submit">Edit</button>
+            </form>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+    <script>
+        function updateImage() {
+            var img = document.getElementById('img_preview');
+            var url = this.value;
+            img.src = url;
+        }
+
+        document.getElementById('img_input')
+            .addEventListener('input', updateImage);
+    </script>
+{% endblock %}

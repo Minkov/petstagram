@@ -1,0 +1,12 @@
+{% extends 'shared/site.html' %}
+{% block site_content %}
+    <div class="container">
+        <form class="w-50 m-auto" method="post" style="border: 1px solid grey; margin: 10% 0%; padding: 5% 5%"
+              action="{% url 'login' %}">
+            <h2>Login</h2>
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+{% endblock %}
