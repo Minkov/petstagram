@@ -3,6 +3,7 @@ from os.path import join
 from pathlib import Path
 
 import cloudinary
+import django_heroku
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'm32$u#l4o694t^9g1v!5idy&wf0euddr34fsc9mj%v!%r%f!7*'
@@ -71,7 +72,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+# Password validationdjango_heroku.settings
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -135,7 +136,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.environ.get('STATIC_ROOT')
+STATIC_ROOT = join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     join(BASE_DIR, 'static'),
 )
@@ -151,3 +152,4 @@ cloudinary.config(
     api_secret="2P86LmMSSE39hltOKXf2lCrUrg0"
 )
 
+django_heroku.settings(locals())
