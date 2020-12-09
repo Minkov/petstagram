@@ -1,6 +1,8 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.views import generic as views
 
 from petstagram.accounts.forms import SignUpForm, UserProfileForm
 from petstagram.accounts.models import UserProfile
@@ -26,31 +28,16 @@ def user_profile(request, pk=None):
         return redirect('current user profile')
 
 
-def signup_user(request):
-    if request.method == 'GET':
-        context = {
-            'form': SignUpForm(),
-        }
+class SignUpView(views.CreateView):
+    template_name = 'accounts/signup.html'
+    form_class = SignUpForm
+    success_url = reverse_lazy('current user profile')
 
-        return render(request, 'accounts/signup.html', context)
-    else:
-        form = SignUpForm(request.POST)
-
-        if form.is_valid():
-            user = form.save()
-            profile = UserProfile(
-                user=user,
-            )
-            profile.save()
-
-            login(request, user)
-            return redirect('current user profile')
-
-        context = {
-            'form': form,
-        }
-
-        return render(request, 'accounts/signup.html', context)
+    def form_valid(self, form):
+        valid = super().form_valid(form)
+        user = form.save()
+        login(self.request, user)
+        return valid
 
 
 def signout_user(request):
