@@ -1,5 +1,7 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
+from django.contrib.auth import views as auth_views
+
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
@@ -28,6 +30,9 @@ def user_profile(request, pk=None):
         return redirect('current user profile')
 
 
+class SignInView(auth_views.LoginView):
+    template_name = 'accounts/signin.html'
+
 class SignUpView(views.CreateView):
     template_name = 'accounts/signup.html'
     form_class = SignUpForm
@@ -40,6 +45,5 @@ class SignUpView(views.CreateView):
         return valid
 
 
-def signout_user(request):
-    logout(request)
-    return redirect('index')
+class SignOutView(auth_views.LogoutView):
+    next_page = reverse_lazy('index')
