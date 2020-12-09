@@ -22,11 +22,11 @@ class Pet(models.Model):
     name = models.CharField(max_length=6, blank=False)
     age = models.IntegerField(blank=False)
     description = models.TextField(blank=False)
-    # image = models.ImageField(
-    #     upload_to='pets',
-    # )
+    image = models.ImageField(
+        upload_to='pets',
+    )
 
-    image = cloudinary_models.CloudinaryField('image')
+    # image = cloudinary_models.CloudinaryField('image')
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
