@@ -14,9 +14,9 @@
             </div>
             <p class="mt-2">Description: {{ pet.description }}</p>
             <div>
-                {#                {% if can_edit %}#}
-                <a href="{% url 'edit pet' pet.pk %}" class="btn btn-success">Edit</a>
-                {#                {% endif %}#}
+                {% if can_edit %}
+                    <a href="{% url 'edit pet' pet.pk %}" class="btn btn-success">Edit</a>
+                {% endif %}
                 {% if can_delete %}
                     <a href="{% url 'delete pet' pet.pk %}" class="btn btn-danger">Delete</a>
                 {% endif %}
@@ -32,10 +32,10 @@
         </div>
     </div>
     <div class="d-block" style="background-color: #f1e3e3; padding:2%">
-        {% if pet.comment_set.exists %}
+        {% if pet.comment_set.all %}
             {% for comment in pet.comment_set.all %}
                 <div class="box">
-                    <a href="{% url 'user profile' comment.user_id %}">{{ pet.user.user.username }}</a>
+                    <a href="{% url 'user profile' comment.user_id %}">{{ comment.user.user.username }}</a>
                     <h5><em>{{ comment.text }}</em></h5>
                     <hr>
                 </div>
@@ -47,7 +47,7 @@
         {% endif %}
         {% if can_comment %}
             <div class="box">
-                <form method="post" action="{% url 'pet details or comment' pet.pk %}">
+                <form method="post" action="{% url 'comment pet' pet.pk %}">
                     {{ form }}
                     {% csrf_token %}
                     <button class="btn btn-primary mt-2" type="submit">Add comment</button>

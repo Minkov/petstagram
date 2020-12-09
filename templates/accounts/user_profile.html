@@ -33,7 +33,7 @@
                                 <h5 class="card-title">{{ pet.type }} {{ pet.name }}, Age: {{ pet.age }}</h5>
                                 <p class="card-text">{{ pet.description }}</p>
                                 <p class="card-text"><strong>Owner: {{ pet.user.user.username }}</strong></p>
-                                <a href="{% url 'pet details or comment' pet.id %}" class="btn btn-primary">See
+                                <a href="{% url 'pet details' pet.id %}" class="btn btn-primary">See
                                     details</a>
                             </div>
                         </div>

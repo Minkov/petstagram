@@ -14,7 +14,10 @@ class PetAdmin(admin.ModelAdmin):
         LikeInline,
     )
 
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'text', 'pet_id')
+
 
 admin.site.register(Pet, PetAdmin)
-admin.site.register(Comment)
+admin.site.register(Comment, CommentAdmin)
 admin.site.register(Like)
