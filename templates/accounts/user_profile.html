@@ -3,8 +3,8 @@
     <div class="text-center">
         <h1>Hello, {{ profile_user.username }}!</h1>
         <h5>This is your profile</h5>
-        {% if profile.profile_picture %}
-            <img class="rounded-circle mb-3" src="{{ profile.profile_picture.url }}" alt="Generic placeholder image"
+        {% if object.profile_picture %}
+            <img class="rounded-circle mb-3" src="{{ object.profile_picture.url }}" alt="Generic placeholder image"
                  width="140"
                  height="140">
         {% else %}

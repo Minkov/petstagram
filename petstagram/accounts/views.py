@@ -10,28 +10,31 @@ from petstagram.accounts.forms import SignUpForm, UserProfileForm
 from petstagram.accounts.models import UserProfile
 
 
-def user_profile(request, pk=None):
-    user = request.user if pk is None else User.objects.get(pk=pk)
-    if request.method == 'GET':
-        context = {
-            'profile_user': user,
-            'profile': user.userprofile,
-            'pets': user.userprofile.pet_set.all(),
-            'form': UserProfileForm(),
-        }
+class UserProfileView(views.UpdateView):
+    template_name = 'accounts/user_profile.html'
+    form_class = UserProfileForm
+    model = UserProfile
+    success_url = reverse_lazy('current user profile')
 
-        return render(request, 'accounts/user_profile.html', context)
-    else:
-        form = UserProfileForm(request.POST, request.FILES, instance=user.userprofile)
-        if form.is_valid():
-            form.save()
-            return redirect('current user profile')
+    def get_object(self, queryset=None):
+        pk = self.kwargs.get('pk', None)
+        user = self.request.user \
+            if pk is None \
+            else User.objects.get(pk=pk)
+        return user.userprofile
 
-        return redirect('current user profile')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['profile_user'] = self.get_object().user
+        context['pets'] = self.get_object().pet_set.all()
+
+        return context
 
 
 class SignInView(auth_views.LoginView):
     template_name = 'accounts/signin.html'
+
 
 class SignUpView(views.CreateView):
     template_name = 'accounts/signup.html'
