@@ -34,9 +34,9 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 # Application definition
 
 INSTALLED_APPS = [
-    'common',
-    'pets',
-    'accounts',
+    'petstagram.common',
+    'petstagram.pets',
+    'petstagram.accounts',
 
     'cloudinary',
 

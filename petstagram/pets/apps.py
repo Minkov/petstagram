@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class PetsConfig(AppConfig):
-    name = 'pets'
+    name = 'petstagram.pets'

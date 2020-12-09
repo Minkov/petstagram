@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from accounts.models import UserProfile
+from petstagram.accounts.models import UserProfile
 
 admin.site.register(UserProfile)

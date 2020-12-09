@@ -1,6 +1,6 @@
 from django import forms
 
-from pets.models import Pet
+from petstagram.pets.models import Pet
 
 
 class PetForm(forms.ModelForm):

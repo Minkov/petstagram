@@ -2,8 +2,8 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from accounts.forms import SignUpForm, UserProfileForm
-from accounts.models import UserProfile
+from petstagram.accounts.forms import SignUpForm, UserProfileForm
+from petstagram.accounts.models import UserProfile
 
 
 def user_profile(request, pk=None):
@@ -34,7 +34,6 @@ def signup_user(request):
 
         return render(request, 'accounts/signup.html', context)
     else:
-        # Dxe5yct3WeHcCfVbVYzaf4T3W70Aainx
         form = SignUpForm(request.POST)
 
         if form.is_valid():
