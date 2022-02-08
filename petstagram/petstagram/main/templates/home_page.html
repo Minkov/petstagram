@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="jumbotron parent">
+        <img style="width: 100%"
+             src="https://activepets.co.za/web/ap-content/uploads/2019/08/Active-pets-dogs-and-cats.png" alt="">
+        <div class="absolute">
+            <h1 class="display-4">Welcome to Petstagram</h1>
+            <p class="lead">Share your pets photos.</p>
+            <hr class="my-4">
+            <div class="inner cover">
+                <h1 class="cover-heading"></h1>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p class="lead">
+                            {% if hp %}
+                                <a href="#" class="btn btn-lg btn-secondary">Enter</a></p>
+                            {% else %}
+                                <a href="#" class="btn btn-lg btn-secondary">Create Profile</a>
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

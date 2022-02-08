@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="row justify-content-center">
+        <div class="d-flex">
+            <div class="d-inline p-2 w-50">
+                <img src="https://icon-library.com/images/profile-picture-icon/profile-picture-icon-9.jpg"
+                     class="w-50 rounded mx-auto d-block" alt="description">
+            </div>
+            <div class="d-inline p-2 w-50">
+                <div class="d-flex flex-column">
+                    <h5><u>Name:</u> Aleksandra Raykova</h5>
+                    <!-- If Date of Birth -->
+                    <h5><u>Birthdate:</u> July 15, 1999</h5>
+                    <!-- If Email -->
+                    <h5><u>Email:</u> sample@softuni.bg</h5>
+                    <!-- If Gender is Chosen -->
+                    <h5><u>Gender:</u> female</h5>
+                    <!-- If Description -->
+                    <h5><u>Description:</u> This is my profile page</h5>
+                </div>
+                <p class="mt-2">Total Images: 2</p>
+                <p class="mt-2">Total Likes: 21</p>
+                <a href="#" class="btn btn-primary">Edit</a>
+                <a href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
