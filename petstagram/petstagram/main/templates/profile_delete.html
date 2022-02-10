@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>Are you sure you want to delete your profile?</h1>
+            <div class="m-auto d-flex justify-content-center">
+                <div class="m-2">
+                    <form method="post" action="{% url 'delete profile' %}">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" value="Confirm" class="btn btn-danger"/>
+                    </form>
+                </div>
+                <div class="m-2">
+                    <a class="btn btn-primary" href="javascript:history.back()">No, go back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -34,14 +34,14 @@
                 </li>
                 {% if not hide_additional_nav_items %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Pet</a>
+                        <a class="nav-link" href="{% url 'create pet' %}">Add Pet</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Add Photo</a>
+                        <a class="nav-link" href="{% url 'create pet photo' %}">Add Photo</a>
                     </li>
                 {% endif %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-link" href="{% url 'profile details' %}">Profile</a>
                 </li>
             {% endif %}
         </ul>
@@ -54,6 +54,9 @@
     {% block page_content %}
     {% endblock %}
 </div>
+
+{% block bottom_page_content %}
+{% endblock %}
 
 <!-- Page Footer -->
 <footer class="fixed-bottom card-footer ">

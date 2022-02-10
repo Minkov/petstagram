@@ -3,26 +3,54 @@
     <div class="row justify-content-center">
         <div class="d-flex">
             <div class="d-inline p-2 w-50">
-                <img src="https://icon-library.com/images/profile-picture-icon/profile-picture-icon-9.jpg"
+                <img src="{{ profile.picture }}"
                      class="w-50 rounded mx-auto d-block" alt="description">
             </div>
             <div class="d-inline p-2 w-50">
+
+
                 <div class="d-flex flex-column">
-                    <h5><u>Name:</u> Aleksandra Raykova</h5>
-                    <!-- If Date of Birth -->
-                    <h5><u>Birthdate:</u> July 15, 1999</h5>
-                    <!-- If Email -->
-                    <h5><u>Email:</u> sample@softuni.bg</h5>
-                    <!-- If Gender is Chosen -->
-                    <h5><u>Gender:</u> female</h5>
-                    <!-- If Description -->
-                    <h5><u>Description:</u> This is my profile page</h5>
+                    <h5><u>Name:</u> {{ profile.first_name }} {{ profile.last_name }}</h5>
+                    {#  getter property `fullname` in profile is also fine #}
+
+                    {# <h5><u>Birthdate:</u> July 15, 1999</h5>#}
+                    {% if profile.date_of_birth %}
+                        <h5><u>Birthdate:</u> {{ profile.date_of_birth }}</h5>
+                    {% endif %}
+                    {% if profile.email %}
+                        <h5><u>Email:</u> {{ profile.email }}</h5>
+                    {% endif %}
+                    {% if profile.gender %}
+                        <h5><u>Gender:</u> {{ profile.gender }}</h5>
+                    {% endif %}
+                    {% if profile.description %}
+                        <h5><u>Description:</u> {{ profile.description }}</h5>
+                    {% endif %}
                 </div>
-                <p class="mt-2">Total Images: 2</p>
-                <p class="mt-2">Total Likes: 21</p>
-                <a href="#" class="btn btn-primary">Edit</a>
-                <a href="#" class="btn btn-danger">Delete</a>
+                <p class="mt-2">Total Images: {{ total_pet_photos_count }}</p>
+                <p class="mt-2">Total Likes: {{ total_likes_count }}</p>
+                <a href="{% url 'edit profile' %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'delete profile' %}" class="btn btn-danger">Delete</a>
             </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block bottom_page_content %}
+
+    <h2 class="text-center">My Pets</h2>
+    <div class="container mb-4">
+        <div class="d-flex justify-content-start mb-5">
+            {% for pet in pets %}
+                <div style="width: 18rem;">
+                    <h5>{{ pet.name }}</h5>
+                    {% if pet.date_of_birth %}
+                        <p class="mt-2">Age: {{ pet.age }}</p>
+                    {% endif %}
+                    <a href="{% url 'edit pet' pet.pk %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'delete pet' pet.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

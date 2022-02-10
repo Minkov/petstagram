@@ -3,7 +3,8 @@ import datetime
 from django.core.validators import MinLengthValidator
 from django.db import models
 
-from petstagram.main.validators import validate_only_letters, validate_file_max_size_in_mb
+from petstagram.main.validators import validate_only_letters, validate_file_max_size_in_mb, MinDateValidator, \
+    MaxDateValidator
 
 
 class Profile(models.Model):
@@ -64,6 +65,7 @@ class Profile(models.Model):
         choices=GENDERS,
         null=True,
         blank=True,
+        default=DO_NOT_SHOW,
     )
 
     def __str__(self):
@@ -83,6 +85,8 @@ class Pet(models.Model):
     # TYPES = ((x, x) for x in (CAT, DOG, BUNNY, PARROT, FISH, OTHER)), not a tuple comprehension, generator
     NAME_MAX_LENGTH = 30
 
+    MIN_DATE = datetime.date(1920, 1, 1)
+
     # Fields(Columns)
     name = models.CharField(
         max_length=NAME_MAX_LENGTH,
@@ -96,6 +100,9 @@ class Pet(models.Model):
     date_of_birth = models.DateField(
         null=True,
         blank=True,
+        validators=(
+            MinDateValidator(),
+        )
     )
 
     # One-to-one relations
@@ -131,11 +138,6 @@ class PetPhoto(models.Model):
             # validate_file_max_size_in_mb(8),
         )
     )
-    tagged_pets = models.ManyToManyField(
-        Pet,
-        # validate at least 1 pet
-    )
-
     description = models.TextField(
         null=True,
         blank=True,
@@ -149,6 +151,7 @@ class PetPhoto(models.Model):
         default=0,
     )
 
-    # likes = models.ForeignKey(
-    #     Like
-    # )
+    tagged_pets = models.ManyToManyField(
+        Pet,
+        # validate at least 1 pet
+    )
