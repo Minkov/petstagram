@@ -1,75 +1,9 @@
 import datetime
 
-from django.core.validators import MinLengthValidator
+from django.contrib.auth import get_user_model
 from django.db import models
 
-from petstagram.main.validators import validate_only_letters, validate_file_max_size_in_mb, MinDateValidator, \
-    MaxDateValidator
-
-
-class Profile(models.Model):
-    FIRST_NAME_MIN_LENGTH = 2
-    FIRST_NAME_MAX_LENGTH = 30
-    LAST_NAME_MIN_LENGTH = 2
-    LAST_NAME_MAX_LENGTH = 30
-
-    MALE = 'Male'
-    FEMALE = 'Female'
-    DO_NOT_SHOW = 'Do not show'
-
-    GENDERS = [(x, x) for x in (MALE, FEMALE, DO_NOT_SHOW)]
-    # ^ same as v
-    # GENDERS = [
-    #     ('Male', 'Male'),
-    #     ('Female', 'Female'),
-    #     ('Do not show', 'Do not show'),
-    # ]
-
-    # id/pk by default
-    first_name = models.CharField(
-        max_length=FIRST_NAME_MAX_LENGTH,
-        validators=(
-            MinLengthValidator(FIRST_NAME_MIN_LENGTH),
-            validate_only_letters,
-            # always_valid('asd'),
-        )
-    )
-
-    last_name = models.CharField(
-        max_length=LAST_NAME_MAX_LENGTH,
-        validators=(
-            MinLengthValidator(LAST_NAME_MIN_LENGTH),
-            validate_only_letters,
-        )
-    )
-
-    picture = models.URLField()
-
-    date_of_birth = models.DateField(
-        null=True,
-        blank=True,
-    )
-
-    description = models.TextField(
-        null=True,
-        blank=True,
-    )
-
-    email = models.EmailField(
-        null=True,
-        blank=True,
-    )
-
-    gender = models.CharField(
-        max_length=max(len(x) for x, _ in GENDERS),
-        choices=GENDERS,
-        null=True,
-        blank=True,
-        default=DO_NOT_SHOW,
-    )
-
-    def __str__(self):
-        return f'{self.first_name} {self.last_name}'
+UserModel = get_user_model()
 
 
 class Pet(models.Model):
@@ -101,15 +35,15 @@ class Pet(models.Model):
         null=True,
         blank=True,
         validators=(
-            MinDateValidator(),
+            # MinDateValidator(),
         )
     )
 
     # One-to-one relations
 
     # One-to-many relations
-    user_profile = models.ForeignKey(
-        Profile,
+    user = models.ForeignKey(
+        UserModel,
         on_delete=models.CASCADE,
     )
 
@@ -127,7 +61,7 @@ class Pet(models.Model):
 
     # Meta
     class Meta:
-        unique_together = ('user_profile', 'name')
+        unique_together = ('user', 'name')
 
 
 class PetPhoto(models.Model):
@@ -155,3 +89,28 @@ class PetPhoto(models.Model):
         Pet,
         # validate at least 1 pet
     )
+
+    user = models.ForeignKey(
+        UserModel,
+        on_delete=models.CASCADE,
+    )
+
+
+'''
+# Pet has a profile relation
+SELECT *
+FROM Pets p
+JOIN Profiles pr
+ON p.profile_id = pr.id
+JOIN Users u
+ON pr.user_id == u.id
+WHERE u.id == request.user.id
+
+# Pet has a user relation
+
+SELECT *
+FROM Pets p
+JOIN Users u
+ON p.user_id == u.id
+WHERE u.id == request.user.id
+'''

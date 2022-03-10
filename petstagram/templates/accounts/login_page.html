@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <h1 class="text-center">Login to Your Profile</h1>
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+
+            <!-- Login Form -->
+            <form method="POST">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn btn-primary mt-2" type="submit">Log in</button>
+            </form>
+            <!-- End Login Form -->
+
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+{% endblock %}

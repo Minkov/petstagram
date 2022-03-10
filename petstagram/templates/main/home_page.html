@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block page_content %}
+    <div class="jumbotron">
+        <img style="width: 100%"
+             src="https://activepets.co.za/web/ap-content/uploads/2019/08/Active-pets-dogs-and-cats.png" alt="">
+        <div class="position-sticky">
+            <h1 class="display-4">Welcome to Petstagram</h1>
+            <p class="lead">Share your pets photos.</p>
+            <hr class="my-4">
+            <div class="flex-row">
+
+                <!-- Login Button -->
+                <a href="{% url 'login user' %}" class="btn btn-lg btn-secondary">Login</a>
+
+                <!-- Register Button -->
+                <a href="{% url 'register' %}" class="btn btn-lg btn-secondary">Register</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
