@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from petstagram.utils import is_production
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # This should be changed
@@ -9,7 +11,7 @@ Dev -> True
 Prod -> False
 '''
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
-APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
+APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 '''
 'False' == 'True' => False
 'True' == 'True'  => True
@@ -20,7 +22,7 @@ APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT')
 Dev -> Whatever
 Prod -> Hidden and very strong
 '''
-SECRET_KEY = 'django-insecure-3txcm039(zk9++^c(y!1u_ur7-h0^u#w0hfb=j6rpeos@e)vij'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # This should be changed
 '''
@@ -81,47 +83,46 @@ WSGI_APPLICATION = 'petstagram.wsgi.application'
 
 # This should be changed
 
-DATABASES = None
+DEFAULT_DATABASE_CONFIG = {
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': 'db.sqlite3',
+}
 
-if APP_ENVIRONMENT == 'Production':
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'd3og5vjdcm9fvi',
-            'USER': 'raveiitlulsweg',
-            'PASSWORD': '10fd30446f29aa2267aed6afca764b693e8f278104089dea9a64a569b7fc2ed2',
-            'HOST': 'ec2-63-32-248-14.eu-west-1.compute.amazonaws.com',
-            'PORT': '5432',
-        },
+if is_production():
+    DEFAULT_DATABASE_CONFIG = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT', '5432'),  # if no env variable DB_PORT, return '5432'
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
-        }
-    }
-print(DATABASES)
+
+DATABASES = {
+    'default': DEFAULT_DATABASE_CONFIG,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 
-# This should be changed
-AUTH_PASSWORD_VALIDATORS = [
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    # },
-    # {
-    #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    # },
-]
+AUTH_PASSWORD_VALIDATORS = []
+
+if is_production():
+    AUTH_PASSWORD_VALIDATORS.extend([
+        {
+            'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        },
+        {
+            'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        },
+    ])
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -153,22 +154,27 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# This should be changed
-# LOGGING = {
-#     'version': 1,
-#     'handlers': {
-#         'console': {
-#             'level': 'DEBUG',
-#             'filters': [],
-#             'class': 'logging.StreamHandler',
-#         }
-#     },
-#     'loggers': {
-#         'django.db.backends': {
-#             'level': 'DEBUG',
-#             'handlers': ['console'],
-#         }
-#     }
-# }
+LOGGING_LEVEL = 'DEBUG'
+
+if is_production():
+    LOGGING_LEVEL = 'INFO'
+
+LOGGING = {
+    'version': 1,
+    'handlers': {
+        'console': {
+            # DEBUG, WARNING, INFO, ERROR, CRITICAL,
+            'level': LOGGING_LEVEL,
+            'filters': [],
+            'class': 'logging.StreamHandler',
+        }
+    },
+    'loggers': {
+        'django.db.backends': {
+            'level': LOGGING_LEVEL,
+            'handlers': ['console'],
+        }
+    }
+}
 
 AUTH_USER_MODEL = 'accounts.PetstagramUser'
