@@ -1,11 +1,32 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# This should be changed
+'''
+Dev -> True
+Prod -> False
+'''
+DEBUG = os.getenv('DEBUG', 'False') == 'True'
+print(DEBUG)
+'''
+'False' == 'True' => False
+'True' == 'True'  => True
+'''
+
+# This should be changed
+'''
+Dev -> Whatever
+Prod -> Hidden and very strong
+'''
 SECRET_KEY = 'django-insecure-3txcm039(zk9++^c(y!1u_ur7-h0^u#w0hfb=j6rpeos@e)vij'
 
-DEBUG = True
-
+# This should be changed
+'''
+Dev -> localhost, 127.0.0.1
+Prod -> petstagram-2022-03.herokuapp.com
+'''
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
@@ -62,6 +83,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'petstagram.wsgi.application'
 
+# This should be changed
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -76,6 +98,8 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
+
+# This should be changed
 AUTH_PASSWORD_VALIDATORS = [
     # {
     #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -120,7 +144,8 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-#
+
+# This should be changed
 # LOGGING = {
 #     'version': 1,
 #     'handlers': {
