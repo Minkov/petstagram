@@ -116,22 +116,22 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-LOGGING = {
-    'version': 1,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'filters': [],
-            'class': 'logging.StreamHandler',
-        }
-    },
-    'loggers': {
-        'django.db.backends': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-        }
-    }
-}
+#
+# LOGGING = {
+#     'version': 1,
+#     'handlers': {
+#         'console': {
+#             'level': 'DEBUG',
+#             'filters': [],
+#             'class': 'logging.StreamHandler',
+#         }
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': 'DEBUG',
+#             'handlers': ['console'],
+#         }
+#     }
+# }
 
 AUTH_USER_MODEL = 'accounts.PetstagramUser'
