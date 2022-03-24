@@ -37,7 +37,7 @@ class ChangeUserPasswordView(auth_views.PasswordChangeView):
 
 class ProfileDetailsView(views.DetailView):
     model = Profile
-    template_name = 'main/../../templates/accounts/profile_details.html'
+    template_name = 'accounts/profile_details.html'
     context_object_name = 'profile'
 
     def get_context_data(self, **kwargs):

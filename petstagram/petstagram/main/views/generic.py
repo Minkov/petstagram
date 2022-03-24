@@ -1,5 +1,4 @@
 from django.views import generic as views
-from django.shortcuts import render, redirect
 
 from petstagram.common.view_mixins import RedirectToDashboard
 from petstagram.main.models import PetPhoto

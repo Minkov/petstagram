@@ -11,6 +11,16 @@ class PetPhotoDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):
     template_name = 'main/photo_details.html'
     context_object_name = 'pet_photo'
 
+    def dispatch(self, request, *args, **kwargs):
+        response = super().dispatch(request, *args, **kwargs)
+
+        viewed_pet_photos = request.session.get('last_viewed_pet_photo_ids', [])
+
+        viewed_pet_photos.insert(0, self.kwargs['pk'])
+        request.session['last_viewed_pet_photo_ids'] = viewed_pet_photos[:4]
+
+        return response
+
     def get_queryset(self):
         return super() \
             .get_queryset() \
@@ -30,6 +40,10 @@ class CreatePetPhotoView(auth_mixin.LoginRequiredMixin, views.CreateView):
     fields = ('photo', 'description', 'tagged_pets')
 
     success_url = reverse_lazy('dashboard')
+
+    # def get_queryset(self):
+    #     # .filter(user=self.request.user)
+    #     pass
 
     def form_valid(self, form):
         form.instance.user = self.request.user

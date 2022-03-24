@@ -3,7 +3,7 @@ from pathlib import Path
 
 import cloudinary
 
-from petstagram.utils import is_production
+from petstagram.utils import is_production, is_test
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +24,7 @@ APP_ENVIRONMENT = os.getenv('APP_ENVIRONMENT', 'Development')
 Dev -> Whatever
 Prod -> Hidden and very strong
 '''
-SECRET_KEY = os.getenv('SECRET_KEY', '')
+SECRET_KEY = os.getenv('SECRET_KEY', 'sk')
 
 # This should be changed
 '''
@@ -60,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'petstagram.common.middlewares.count_user_clicks_middleware',
+    'petstagram.common.middlewares.last_viewed_pet_photos_middleware',
 ]
 
 ROOT_URLCONF = 'petstagram.urls'
@@ -152,6 +154,8 @@ LOGGING_LEVEL = 'DEBUG'
 
 if is_production():
     LOGGING_LEVEL = 'INFO'
+elif is_test():
+    LOGGING_LEVEL = 'CRITICAL'
 
 LOGGING = {
     'version': 1,
