@@ -30,7 +30,7 @@
     </div>
 
     <div class="imgBx" id="photo-{{ photo.pk }}">
-        <img src="{% static 'images/axolotl.jpeg' %}" alt="post" class="cover">
+        <img src="media/{{ photo.photo }}" alt="post" class="cover">
     </div>
 
     <div class="bottom">
@@ -146,14 +146,12 @@
                     <i class="far fa-smile"></i>
                 </h3>
             </div>
-            <!-- Start Add Comments Form -->
-            <form method="post" action="#">
-                <label for="id_body">Body:</label>
-                <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
-                          required="" id="id_body"></textarea>
-                <button type="submit">Post</button>
+                <form method="post" action="{% url 'comment photo' photo_id=photo.pk %}">
+                    {{ comment_form }}
+                    <button type="submit">Post</button>
+                    {% csrf_token %}
+                </form>
             </form>
-
         </div>
     </div>
 </div>
