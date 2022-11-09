@@ -9,7 +9,6 @@
                      src="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}"
                      alt="img1">
             </a>
-            <!-- Link to Home Page -->
             <a class="home" href="{% url 'index' %}">
                 <i>Petstagram</i>
             </a>
@@ -18,23 +17,38 @@
         <div class="nav-links">
             <ul class="nav-group">
                 <li class="nav-item">
-                    <!-- Link to Add Pet Page -->
                     <a href="{% url 'add pet' %}">
                         <i>Add Pet</i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <!-- Link to Add Photo Page -->
                     <a href="{% url 'add photo' %}">
                         <i>Add Photo</i>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <!-- Link to Profile Page -->
-                    <a href="{% url 'details user' pk=1 %}">
-                        <i>Profile</i>
-                    </a>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'details user' pk=request.user.pk %}">
+                            <i>Profile</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout user' %}">
+                            <i>Sign out</i>
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'register user' %}">
+                            <i>Sign up</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'login user' %}">
+                            <i>Sign in</i>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

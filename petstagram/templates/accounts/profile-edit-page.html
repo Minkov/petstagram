@@ -1,61 +1,41 @@
 {% extends 'base/base.html' %}
+{% load static %}
 {% block page_content %}
-    <!-- Start Edit Profile Section -->
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
     <div class="edit-delete">
         <h2>Edit Profile</h2>
-        <!-- Start Edit Profile From -->
-        <form action="">
-            <div class="label-input">
-                <label for="first name">First name: </label>
-                <input type="text" placeholder="First name" value="Diyan">
-            </div>
-            <br>
-            <div class="label-input">
-                <label for="last name">Last name: </label>
-                <input type="text" placeholder="Last name" value="Kalayadzhiev">
-            </div>
-            <br>
-            <div class="label-input">
-                <label for="username">Username: </label>
-                <input type="text" placeholder="Username" value="k_dido">
-            </div>
-            <br>
-            <div class="label-input">
-                <label for="email">Email: </label>
-                <input type="email" placeholder="Email" value="d.denov@gmail.com">
-            </div>
-            <br>
-            <div class="label-input">
-                <label for="image">Image: </label>
-                <input type="text" placeholder="Link to to profile picture"
-                       value="https://i.natgeofe.com/n/de94c416-6d23-45f5-9708-e8d56289268e/naturepl_01132178.jpg?w=636&h=631">
-            </div>
-            <br>
+        <form method="post" action="{% url 'edit user' pk=object.pk %}">
+            {% for field in form %}
+                <p class="error"> {{ field.errors }} </p>
+                <div class="label-input">
+                    <label>{{ field.label }}</label>
 
-            <div class="label-input">
-                <label for="image">Gender: </label>
-                <div class="list-choice">
-                    <div class="list-choice-title">Gender</div>
-                    <div class="list-choice-objects">
-                        <label>
-                            <input type="radio" name="gender"/> <span>Male</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="gender"/> <span>Female</span>
-                        </label>
-                        <label>
-                            <input type="radio" name="gender"/> <span>Do not show</span>
-                        </label>
-                    </div>
+                    {% if not field.label == "Gender:" %}
+                        {{ field }}
+
+                    {% else %}
+                        <div class="list-choice">
+                            <div class="list-choice-title">Gender</div>
+                            <div class="list-choice-objects">
+                                {% for type, value in form.fields.gender.choices %}
+                                    <label>
+                                        <input type="radio" value="{{ value }}" name="gender"
+                                                {% if form.gender.value == value %}
+                                               checked
+                                                {% endif %}/>
+                                        <span>{{ value }}</span>
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
                 </div>
-            </div>
+                <br>
+            {% endfor %}
 
-            <!-- Edit Profile Button -->
             <button class="edit-btn" type="submit">Edit</button>
+            {% csrf_token %}
         </form>
-        <!-- End Edit Profile Form -->
-
     </div>
-    <!-- End Edit Profile Section -->
-
 {% endblock %}

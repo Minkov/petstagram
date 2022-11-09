@@ -15,14 +15,15 @@
                 <div class="personal">
                     <div class="edit">
                         <p>{{ pet.name }}</p>
-                        <!-- Pet Edit Button -->
-                        <a href="{% url 'edit pet' username='doncho' pet_slug=pet.slug %}">
-                            <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
-                        </a>
-                        <!-- Pet Delete Button -->
-                        <a href="{% url 'delete pet' username='doncho' pet_slug=pet.slug %}">
-                            <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
-                        </a>
+                        {% if is_owner %}
+                            <a href="{% url 'edit pet' username='doncho' pet_slug=pet.slug %}">
+                                <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
+                            </a>
+                            <!-- Pet Delete Button -->
+                            <a href="{% url 'delete pet' username='doncho' pet_slug=pet.slug %}">
+                                <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
+                            </a>
+                        {% endif %}
                     </div>
                     <div class="data">
                         <span>{{ photos_count }}</span>
