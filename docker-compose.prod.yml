@@ -4,7 +4,8 @@ services:
   nginx:
     image: nginx
     ports:
-      - 1337:80
+      - 80:80
+      - 443:443
     depends_on:
       - web
     volumes:
@@ -29,6 +30,7 @@ services:
       - postgres
     volumes:
       - ./staticfiles:/tmp/staticfiles
+      - ./mediafiles:/tmp/staticfiles
   postgres:    
     image: postgres
     restart: always
@@ -37,7 +39,7 @@ services:
     environment:
       POSTGRES_PASSWORD: 1123QwER
       POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
+      POSTGRES_DB: petstagram_db
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./postgresql:/var/lib/postgresql/data
