@@ -1,0 +1,43 @@
+version: '3.4'
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - web
+    volumes:
+      - ./staticfiles:/home/app/web/staticfiles
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+  web:
+    build: ./petstagram
+    command: gunicorn petstagram.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    env_file:
+      - ./petstagram/.env.prod
+    depends_on:
+      - postgres
+    volumes:
+      - ./staticfiles:/tmp/staticfiles
+  postgres:    
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: 1123QwER
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
