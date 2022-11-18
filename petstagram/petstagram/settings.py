@@ -1,18 +1,20 @@
+import os
 from pathlib import Path
 
 from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-vzc7-f3%-5if994wl=ci96nd!n8f(-%t9df*%3m_d#wrs9hsfj'
+SECRET_KEY = os.environ.get('SECREY_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-]
+print(f'SECREY_KEY={SECRET_KEY}')
+print(f'DEBUG={DEBUG}')
+
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
+
+print(ALLOWED_HOSTS)
 
 # Application definition
 
@@ -63,12 +65,12 @@ WSGI_APPLICATION = 'petstagram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'petstagram_db',
-        'USER': 'postgres',
-        'PASSWORD': '1123QwER',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': os.environ.get('DB_ENGINE'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': os.environ.get('DB_PORT'),
     },
 }
 
@@ -112,6 +114,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     BASE_DIR / 'staticfiles',
 )
+
+STATIC_ROOT = '/tmp/petstagram/staticfiles'
 
 MEDIA_URL = '/media/'
 

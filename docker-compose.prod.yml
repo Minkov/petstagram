@@ -2,10 +2,11 @@ version: '3.4'
 
 services:
   web:
+    image: minkov/petstagram
     build: ./petstagram
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn petstagram.wsgi:application --bind 0.0.0.0:8000
     volumes:
-      - ./petstagram/:/usr/src/app/
+      - ./staticfiles:/tmp/petstagram/staticfiles
     ports:
       - 8000:8000
     env_file:
@@ -24,3 +25,16 @@ services:
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./postgresql:/var/lib/postgresql/data
+  nginx:
+    image: nginx
+    ports:
+      - 81:80
+      - 443:443
+    volumes:
+      - ./staticfiles:/home/app/web/staticfiles
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    depends_on:
+      - web
