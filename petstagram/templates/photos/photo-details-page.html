@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="imgBx" id="{{ photo.pk }}">
-                    <img src="/media/{{ photo.photo }}"
+                    <img src="{{ photo.photo.url }}"
                          alt="photo of the pets {{ photo.tagged_pets.all|join:', ' }}"
                          class="cover">
                 </div>

@@ -1,20 +1,18 @@
 import os
 from pathlib import Path
 
+import cloudinary
 from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECREY_KEY')
 
-DEBUG = bool(os.environ.get('DEBUG'))
+DEBUG = int(os.environ.get('DEBUG', 1))
 
-print(f'SECREY_KEY={SECRET_KEY}')
-print(f'DEBUG={DEBUG}')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
-
-print(ALLOWED_HOSTS)
+CSRF_TRUSTED_ORIGINS = [f'https://{x}' for x in ALLOWED_HOSTS]
 
 # Application definition
 
@@ -25,6 +23,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'cloudinary',
 
     'petstagram.accounts',
     'petstagram.common',
@@ -119,13 +119,31 @@ STATIC_ROOT = '/tmp/petstagram/staticfiles'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'mediafiles'
+# MEDIA_ROOT = '/tmp/petstagram/mediafiles'
+cloudinary.config(
+    cloud_name="minkov",
+    api_key="616642676284453",
+    api_secret="sTKrrlcT3TzS154w3q52ZJ71Ilk",
+    secure=True
+)
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.AppUser'
 
 LOGIN_REDIRECT_URL = reverse_lazy('index')
+
+if DEBUG:
+    EMAIL_HOST = os.environ.get('EMAIL_HOST')
+    EMAIL_PORT = os.environ.get('EMAIL_PORT')
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+else:
+    EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+    MAILJET_API_KEY = os.environ.get('EMAIL_HOST_USER')
+    MAILJET_API_SECRET = os.environ.get('EMAIL_HOST_PASSWORD')
+
+DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
 
 LOGGING = {
     'version': 1,

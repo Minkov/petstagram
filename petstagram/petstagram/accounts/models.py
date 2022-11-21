@@ -45,5 +45,9 @@ class AppUser(auth_models.AbstractUser):
         max_length=Gender.max_len(),
     )
 
+    # is_verified = models.BooleanField(
+    #     default=False,
+    # )
+
     # Users log in with `email`
     # USERNAME_FIELD = 'email'

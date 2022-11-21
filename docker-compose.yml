@@ -1,6 +1,11 @@
 version: '3.4'
 
 services:
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
   web:
     build: ./petstagram
     command: python manage.py runserver 0.0.0.0:8000
@@ -12,6 +17,7 @@ services:
       - ./petstagram/envs/.env
     depends_on:
       - postgres
+      - mailcatcher
   postgres:    
     image: postgres
     restart: always
