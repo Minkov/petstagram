@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% load forms %}
+
+{% block page_content %}
+
+    <div class="login-register-div">
+        <div class="login-register-box">
+            <h1>Petstagram</h1>
+
+            <form action="{% url 'register user' %}" method="post">
+                {{ form.username|form_field_class:'username-field' }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
+
+                <input type="hidden" name="next" value="{{ next }}">
+
+                {% csrf_token %}
+
+                <button type="submit">Register</button>
+            </form>
+
+        </div>
+        <div class="second-option">
+
+            <p>Have an account? <a href="#">Log in</a></p>
+        </div>
+    </div>
+
+{% endblock %}
