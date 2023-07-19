@@ -27,7 +27,16 @@ class RegisterUserView(OnlyAnonymousMixin, views.CreateView):
 
         login(self.request, self.object)
 
+        # Send email on successful register: Variant 1
+        # Not good one, only sends email when user is registered from the site,
+        # but not from the `admin`
+        # send_mail....
+
         return result
+
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

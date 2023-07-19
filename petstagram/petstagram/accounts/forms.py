@@ -24,3 +24,7 @@ class RegisterUserForm(auth_forms.UserCreationForm):
                 'class': 'ala-bala'
             })
         }
+
+    def save(self, commit=True):
+        result = super().save(commit)
+        return result

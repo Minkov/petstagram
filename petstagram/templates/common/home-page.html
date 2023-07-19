@@ -5,39 +5,35 @@
     <div class="container">
         <div class="col-9">
 
-            <!-- Start Searchbar Form -->
             <form class="searchbar" method="get" action="{% url 'index' %}">
                 {{ search_form }}
                 <button>
                     <img src="{% static 'images/search.png' %}" height="18" alt="img2">
                 </button>
             </form>
-            <!-- End Searchbar Form -->
 
-            <!-- Start Pet Photos Post Section -->
-            <!-- Start Pet Photo Post -->
             {% for photo in all_photos %}
                 <div class="card">
 
-                    <!-- Start User Details and Image Location -->
                     <div class="top">
                         <div class="userDetails">
-                            <!-- Link to User Profile Page -->
-                            <a href="#">
+                            <a href="{% url 'profile details' pk=photo.user_id %}">
                                 <div class="profilepic">
                                     <div class="profile_img">
                                         <div class="image">
-                                            <img src="{% static 'images/person.png' %}" alt="img8">
+                                            {% if photo.user.profile_picture %}
+                                                <img src="{{ photo.user.profile_picture.path }}" alt="img8">
+                                            {% else %}
+                                                <img src="{% static 'images/person.png' %}" alt="img8">
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
                             </a>
                             <h3>
-                                <!-- Link to User Profile Page -->
                                 <a href="#">
                                     <!-- if user has first name and last name -->
-                                    Diyan Kalaydzhiev
-                                    <!-- else -->
+                                    {{ photo.user.full_name }}
                                     <!-- show user username -->
                                 </a>
                                 <br>
@@ -48,22 +44,14 @@
                             </h3>
                         </div>
                     </div>
-                    <!-- End User Details and Image Location -->
-
-                    <!-- Start Pet Photo -->
                     <div class="imgBx" id="{{ photo.id }}">
                         <img src="{{ photo.pet_image.url }}" alt="post" class="cover">
                     </div>
-                    <!-- End Pet Photo -->
-
-                    <!-- Start Like and Share Buttons -->
                     <div class="bottom">
                         <div class="actionBtns">
                             <div class="left">
-                                <!-- Start Like Button -->
                                 <span class="heart">
 									<a href="{% url 'like' photo.id %}">
-										<!-- if user has liked the photo -->
                                         {% if photo.liked_by_user %}
                                             <svg style="color: red"
                                                  xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +75,6 @@
                                                  role="img"
                                                  viewBox="0 0 48 48"
                                                  width="24">
-                                        <!-- Coordinate path -->
                                         <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4
                                                     11.5 0 6.8-5.9 11-11.5 16S25 41.3 24
                                                     41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3
@@ -105,9 +92,7 @@
                                         {% endif %}
 								</a>
 								</span>
-                                <!-- End Like Button -->
 
-                                <!-- Start Share Button -->
                                 <a href="{% url 'share' photo.id %}">
                                     <svg aria-label="Share Post" class="_8-yf5 " color="#262626" fill="#262626"
                                          height="24" role="img" viewBox="0 0 48 48" width="24">
@@ -120,18 +105,11 @@
                                         </path>
                                     </svg>
                                 </a>
-                                <!-- End Share Button -->
-
                             </div>
                         </div>
-                        <!-- End Like and Share Buttons -->
 
-                        <!-- Number of Likes per Photo -->
                         <p class="likes">{{ photo.like_set.count }}</p>
 
-
-                        <!-- Start Tagged Pets -->
-                        <!-- Link to Tagged Pet Details Page-->
                         {% for tagged_pet in photo.tagged_pets.all %}
                             <a href="{% url 'pet details' "username" tagged_pet.slug %}">
                                 <p class="message">

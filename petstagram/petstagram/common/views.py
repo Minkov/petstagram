@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect, resolve_url
+from django.shortcuts import render, redirect
 
 from petstagram.photos.models import Photo
 from .models import Like, Comment
@@ -14,10 +14,12 @@ def index(request):
         search_text = search_form.cleaned_data['search_text']
         photos = photos.filter(tagged_pets__name__icontains=search_text)
 
-    for photo in photos:
-        photo.liked_by_user = photo.like_set\
-            .filter(user=request.user)\
-            .exists()
+    if request.user.is_authenticated:
+
+        for photo in photos:
+            photo.liked_by_user = photo.like_set \
+                .filter(user=request.user) \
+                .exists()
 
     context = {
         "all_photos": photos,

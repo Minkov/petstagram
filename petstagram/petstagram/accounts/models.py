@@ -18,14 +18,13 @@ class ChoicesMixin:
 class ChoicesStringsMixin(ChoicesMixin):
     @classmethod
     def max_length(cls):
-        return max(len(x.value) for x in cls)
+        return max(len(x.value) for x in cls) + 1
 
 
-class Gender(ChoicesStringsMixin, Enum):
-    MALE = 'male'
-    FEMALE = 'female'
-    DO_NOT_SHOW = 'do not show'
-
+class Gender(ChoicesMixin, Enum):
+    MALE = 1
+    FEMALE = 2
+    DO_NOT_SHOW = 3
 
 # TODO: if enough time
 class Gender2(models.Model):
@@ -58,10 +57,10 @@ class PetstagramUser(auth_models.AbstractUser):
         unique=True,
     )
 
-    gender = models.CharField(
+    gender = models.IntegerField(
         choices=Gender.choices(),
-        max_length=Gender.max_length(),
-        default=Gender.DO_NOT_SHOW,
+        # max_length=Gender.max_length(),
+        default=Gender.DO_NOT_SHOW.value,
     )
 
     profile_picture = models.URLField(
@@ -73,4 +72,14 @@ class PetstagramUser(auth_models.AbstractUser):
     def full_name(self):
         if self.first_name or self.last_name:
             return f'{self.first_name} {self.last_name}'
-        return None
+        return self.username
+
+    def save(self, *args, **kwargs):
+        result = super().save(*args, **kwargs)
+
+        # Send email on successful register: Variant 2
+        # Good enough, but there is a better option (signals)
+        # send_mail....
+        return result
+
+b = 5
