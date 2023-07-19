@@ -26,6 +26,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: petstagram_db
       PGDATA: /var/lib/postgresql/data/pgdata
+    env_file:
+      - ./envs/.env
     volumes:
       - ./postgresql:/var/lib/postgresql/data
   nginx:
@@ -34,7 +36,7 @@ services:
       - "81:80"
       - "443:443"
     volumes:
-      - /tmp/for_deploy/static:/home/app/web/staticfiles
+      - /tmp/app-resources/static:/home/app/web/staticfiles
       - ./nginx/conf.d:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
       - ./certbot/www:/var/www/certbot/:ro
