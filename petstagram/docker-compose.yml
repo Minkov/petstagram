@@ -11,7 +11,7 @@ services:
     env_file:
       - ./envs/.env
     volumes:
-      - /tmp/app-resources/static:/app/static
+      - /tmp/app-resources/static:/app/static_files
     platform: linux/amd64
     command: gunicorn --bind=0.0.0.0:8000 petstagram.wsgi:application
     links:
