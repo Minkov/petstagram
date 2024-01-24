@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Starts Head Section -->
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}">
+    <title>Petstagram</title>
+</head>
+<!-- End Head Section -->
+
+<!-- Starts Body Section -->
+<body>
+
+<!-- Starts Header Section with Navigation Bar -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <!-- Link to Home Page -->
+                <a href="#">
+                    <img width="50px" src="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}" alt="img1">
+                </a>
+
+                <!-- Link to Home Page -->
+                <a class="home" href="#">
+                    <i>Petstagram</i>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <ul class="nav-group">
+                    <li class="nav-item">
+
+                        <!-- Link to Add Pet Page -->
+                        <a href="#">
+                            <i>Add Pet</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <!-- Link to Add Photo Page -->
+                        <a href="#">
+                            <i>Add Photo</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+
+                        <!-- Link to Profile Page -->
+                        <a href="#">
+                            <i>Profile</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Log out -->
+                        <a href="#">
+                            <i>Log out</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header Section with Navigation Bar -->
+
+<!-- Starts Main Section -->
+<main>
+    <div class="container">
+        <div class="col-9">
+
+            <!-- Start Pet Photo Post Section -->
+            <div class="card">
+                <div class="top">
+
+                    <!-- Start User Details and Image Location Section -->
+                    <div class="userDetails">
+
+                        <!-- Link to User Profile Details Page-->
+                        <a href="#">
+                            <div class="profilepic">
+                                <div class="profile_img">
+                                    <div class="image">
+                                        <img src="{% static 'images/person.png' %}" alt="img8">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <h3>
+
+                            <!-- Link to User Profile Details Page -->
+                            <a href="#">
+                                <!-- IF user has first name and last name -->
+                                Diyan Kalaydzhiev
+                                <!-- else -->
+                                <!-- show user username -->
+                            </a>
+                            <br>
+
+                            <!-- IF the photo has location -->
+                            <span>Bansko, Bulgaria</span>
+
+                            <!-- IF the viewer is the creator of the photo -->
+                            <div class="edit-delete-btns">
+
+                                <!-- Link to Edit Pet Photo Page -->
+                                <a href="#">
+                                    <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}"
+                                         alt="edit button">
+                                </a>
+
+                                <!-- Link to Delete Pet Photo Page -->
+                                <a href="#">
+                                    <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
+                                </a>
+                            </div>
+                            <!-- End IF the viewer is the creator of the photo -->
+
+                        </h3>
+                    </div>
+                    <!-- End User Details and Image Location Section -->
+
+                </div>
+
+                <!-- Start Pet Photo -->
+                <div class="imgBx" id="place the id of the photo here">
+                    <!-- Pet Photo -->
+                    <img src="{% static 'images/axolotl.jpeg' %}" alt="post" class="cover">
+                </div>
+                <!-- End Pet Photo -->
+
+                <div class="bottom">
+
+                    <!-- Start Like and Share Buttons Section -->
+                    <div class="actionBtns">
+                        <div class="left">
+
+                            <!-- Start Like Button -->
+                            <span class="heart">
+
+                                    <!-- Link to Like Path -->
+                                    <a href="#">
+                                        <!-- if user has liked the photo -->
+                                        <!-- <i class="fa-solid fa-heart" style="color: #ed4040;"></i> -->
+                                        <!-- else -->
+                                        <i class="fa-regular fa-heart"></i>
+                                    </a>
+                            </span>
+                            <!-- End Like Button -->
+
+                            <!-- Start Share  Button -->
+
+                            <!-- Link to Share Path -->
+                            <a href="#">
+                                <i class="fa-solid fa-share"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End Like and Share Buttons Section -->
+
+                    <!-- Number of Likes for the Photo -->
+                    <p class="likes">203 likes</p>
+
+                    <!-- Start Tagged Pets Section-->
+                    <!-- Link to First Tagged Pet Details Page -->
+                    <a href="#">
+                        <p class="message">
+                            <b>Sasho</b>
+                        </p>
+                    </a>
+                    <!-- Link to Second Tagged Pet Details Page -->
+                    <a href="#">
+                        <p class="message">
+                            <b>Some other fish</b>
+                        </p>
+                    </a>
+                    <!-- End Tagged Pets Section-->
+
+                    <!-- Photo description -->
+                    <p class="pet-details">This is my pet</p>
+
+                    <!-- Date of Publication or edit of the Photo -->
+                    <h5 class="postTime">19/09/2022</h5>
+
+                    <!-- Start Comments Section -->
+                    <div class="comments">
+                        <div class="top">
+                            <div class="userDetails">
+                                <div class="comment-data">
+                                    <div class="profilepic">
+                                        <div class="profile_img">
+                                            <div class="image">
+                                                <!-- User Profile Image -->
+                                                <img src="{% static 'images/person.png' %}" alt="img8">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <!-- Link to User Profile Details Page-->
+                                        <!-- User First and/or Last Name or username-->
+                                        <a href="">Steven Ivanov</a>
+                                        <!-- User Comment -->
+                                        - OMG where can i get one
+                                    </p>
+                                </div>
+                                <span>Sept. 20, 2022, 5:02 p.m.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Comments Section -->
+                </div>
+
+                <!-- Start Add Comments Section -->
+                <div class="addComments">
+
+                    <!-- Start Add Comments Form -->
+                    <form method="post" action="#">
+                        <label for="id_body">Body:</label>
+                        <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
+                                  required="" id="id_body"></textarea>
+                        <!-- Post Comments Button -->
+                        <button type="submit">Post</button>
+                    </form>
+                    <!-- End Add Comments Form -->
+
+                </div>
+                <!-- End Add Comments Section -->
+
+            </div>
+            <!-- End Pet Photo Post Section -->
+
+        </div>
+    </div>
+
+</main>
+<!-- End Main Section -->
+
+<!-- Start Footer Section -->
+<div class="footer">
+		<span class="footer-section">
+			© 2024 SOFTUNI WORKSHOP FOR PYTHON WEB MODULE
+		</span>
+</div>
+<!-- End Footer Section -->
+
+</body>
+</html>

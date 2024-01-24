@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Starts Head Section -->
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}">
+    <title>Petstagram</title>
+</head>
+<!-- End Head Section -->
+
+<!-- Starts Body Section -->
+<body>
+
+<!-- Starts Header Section with Navigation Bar -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <!-- Link to Home Page -->
+                <a href="#">
+                    <img width="50px" src="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}" alt="img1">
+                </a>
+
+                <!-- Link to Home Page -->
+                <a class="home" href="#">
+                    <i>Petstagram</i>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <ul class="nav-group">
+                    <li class="nav-item">
+                        <!-- Link to Add Pet Page -->
+                        <a href="#">
+                            <i>Add Pet</i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <!-- Link to Add Photo Page -->
+                        <a href="#">
+                            <i>Add Photo</i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <!-- Link to Profile Page -->
+                        <a href="#">
+                            <i>Profile</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Log out -->
+                        <a href="#">
+                            <i>Log out</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header Section with Navigation Bar -->
+
+<!-- Starts Main Section -->
+<main>
+    <!-- Start Edit Pet Section -->
+    <div class="edit-delete edit-photo">
+        <h2>Edit Pet</h2>
+        <!-- Start Edit Pet From -->
+        <form action="">
+            <p>
+                <label for="pet-name">Pet name: </label>
+                <input type="text" placeholder="Name" value="Sasho">
+            </p>
+            <p>
+                <label for="pet-date">Date of birth: </label>
+                <input type="date">
+            </p>
+            <p>
+                <label for="pet-image">Link to image: </label>
+                <input type="text" placeholder="Link to image"
+                       value="https://i.natgeofe.com/n/de94c416-6d23-45f5-9708-e8d56289268e/naturepl_01132178.jpg?w=636&h=631"
+                       alt="pet image">
+            </p>
+            <!-- Edit Pet Button -->
+            <button class="edit-btn" type="submit">Edit</button>
+        </form>
+        <!-- End Edit Pet Form -->
+
+    </div>
+    <!-- End Edit Pet Section -->
+
+</main>
+<!-- End Main Section -->
+
+<!-- Start Footer Section -->
+<div class="footer">
+		<span class="footer-section">
+			© 2024 SOFTUNI WORKSHOP FOR PYTHON WEB MODULE
+		</span>
+</div>
+<!-- End Footer Section -->
+
+</body>
+</html>

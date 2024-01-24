@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<!-- Starts Head Section -->
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}">
+    <title>Petstagram</title>
+</head>
+<!-- End Head Section -->
+
+<!-- Starts Body Section -->
+<body>
+
+<!-- Starts Header Section with Navigation Bar -->
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <!-- Link to Home Page -->
+                <a href="#">
+                    <img width="50px" src="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}" alt="img1">
+                </a>
+                <!-- Link to Home Page -->
+                <a class="home" href="#">
+                    <i>Petstagram</i>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <ul class="nav-group">
+                    <li class="nav-item">
+                        <!-- Link to Add Pet Page -->
+                        <a href="#">
+                            <i>Add Pet</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link to Add Photo Page -->
+                        <a href="#">
+                            <i>Add Photo</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link to Login Page -->
+                        <a href="#">
+                            <i>Login</i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <!-- Link to Register Page -->
+                        <a href="#">
+                            <i>Register</i>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <!-- Link to Profile Details Page -->
+                        <a href="#">
+                            <i>Profile</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Log out -->
+                        <a href="#">
+                            <i>Log out</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End Header Section with Navigation Bar -->
+
+<!-- Starts Main Section -->
+<main>
+    <!-- 404 page -->
+    <div class="not-found-img">
+        <img src="{% static 'images/zillow-404-page-5f3ed6a6abaa5.gif' %}" alt="404 not found gif">
+    </div>
+
+    <div class="not-found">
+        <h1>
+            Uh oh,<br> something broke.
+        </h1>
+
+        <h3>Error 404 - page not found.</h3>
+        <!-- Link to Home Page -->
+        <a href="#">
+            <button>Return to Petstagram</button>
+        </a>
+    </div>
+    <!-- End 404 page -->
+
+</main>
+<!-- End Main Section -->
+
+<!-- Starts Footer Section -->
+<div class="footer">
+		<span class="footer-section">
+			© 2024 SOFTUNI WORKSHOP FOR PYTHON WEB MODULE
+		</span>
+</div>
+<!-- End Footer Section -->
+
+</body>
+</html>
