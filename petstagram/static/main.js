@@ -1,1 +1,0 @@
-console.log('My JS as static file works!')
