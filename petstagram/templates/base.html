@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/free-30-instagram-stories-icons23_122570.png' %}">
+    <title>Petstagram</title>
+</head>
+<body>
+
+{% include 'partials/layout/header.html' %}
+
+<main>
+    {% block main_content %}
+    {% endblock %}
+</main>
+
+<div class="footer">
+		<span class="footer-section">
+			© 2024 SOFTUNI WORKSHOP FOR PYTHON WEB MODULE
+		</span>
+</div>
+
+</body>
+</html>

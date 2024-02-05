@@ -1,12 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 
-'''
-Open the pets/models.py file. There should be created one more field that will be auto populated with the following information:
-•	Slug - a slug automatically generated using the pet's name and the pet's id, separated by a "-" (dash).
-The slug is part of the URL and as you know each URL should be unique: 
-'''
-
 
 class Pet(models.Model):
     MAX_NAME_LENGTH = 30

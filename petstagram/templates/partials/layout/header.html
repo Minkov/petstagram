@@ -1,0 +1,55 @@
+{% load static %}
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="{% url 'index' %}">
+                    <img width="50px" src="{% static '/images/free-30-instagram-stories-icons23_122570.png' %}"
+                         alt="img1">
+                </a>
+
+                <a class="home" href="{% url 'index' %}">
+                    <i>Petstagram</i>
+                </a>
+            </div>
+
+            <div class="nav-links">
+                <ul class="nav-group">
+                    <li class="nav-item">
+                        <a href="{% url 'create pet' %}">
+                            <i>Add Pet</i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'create photo' %}">
+                            <i>Add Photo</i>
+                        </a>
+                    </li>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'details profile' pk=2 %}">
+                                <i>Profile</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'signout user' %}">
+                                <i>Log out</i>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'signin user' %}">
+                                <i>Login</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'signup user' %}">
+                                <i>Register</i>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>

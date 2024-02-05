@@ -11,7 +11,7 @@ def random_validator(value):
     pass
 
 
-SIZE_5_MB = 1 * 1024 * 1024
+SIZE_5_MB = 5 * 1024 * 1024
 
 
 class MaxFileSizeValidator(BaseValidator):
@@ -35,6 +35,13 @@ class PetPhoto(models.Model):
     MAX_DESCRIPTION_LENGTH = 300
 
     MAX_LOCATION_LENGTH = 30
+
+    # def delete(self, using=None, keep_parents=False):
+    #     self.is_deleted = True
+
+    is_deleted = models.BooleanField(
+        default=False,
+    )
 
     photo = models.ImageField(
         upload_to='pet_photos/',

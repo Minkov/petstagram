@@ -1,0 +1,70 @@
+{% load static %}
+
+<div class="card">
+    <div class="top">
+        <div class="userDetails">
+            <a href="{% url 'details profile' pk=1 %}">
+                <div class="profilepic">
+                    <div class="profile_img">
+                        <div class="image">
+                            <img src="{% static 'images/person.png' %}" alt="img8">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <h3>
+                <a href="{% url 'details profile' pk=1 %}">
+                    Diyan Kalaydzhiev
+                </a>
+                <br>
+                <span>{{ photo.location }}</span>
+            </h3>
+        </div>
+    </div>
+    <div class="imgBx" id="photo-{{ photo.pk }}">
+        <img src="{{ photo.photo.url }}" alt="post" class="cover">
+    </div>
+    <div class="bottom">
+        <div class="actionBtns">
+            <div class="left">
+                <span class="heart">
+                    <a href="{% url 'like_pet_photo' pk=photo.pk %}">
+                        {% if photo.photolike_set.count > 0 %}
+                            <i class="fa-solid fa-heart" style="color: #ed4040;"></i>
+                        {% else %}
+                            <i class="fa-regular fa-heart"></i>
+                        {% endif %}
+                    </a>
+                </span>
+                <a href="#">
+                    <i class="fa-solid fa-share"></i>
+                </a>
+            </div>
+        </div>
+
+        <p class="likes">{{ photo.photolike_set.count }} likes</p>
+
+        {% for pet in photo.pets.all %}
+            <a href="{% url 'details pet' username='Doncho' pet_slug=pet.slug %}">
+                <p class="message">
+                    <b>{{ pet.name }}</b>
+                </p>
+            </a>
+        {% endfor %}
+
+        <a href="{% url 'details photo' pk=photo.pk %}">
+            <h4 class="details">See details</h4>
+        </a>
+
+        <h5 class="postTime">{{ photo.created_at|date:'d/m/Y' }}</h5>
+
+        <div class="addComments">
+            <form method="post" action="#">
+                <label for="id_body">Body:</label>
+                <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
+                          required="" id="id_body"></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+    </div>
+</div>
