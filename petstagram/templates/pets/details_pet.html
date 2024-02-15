@@ -14,16 +14,16 @@
                 </div>
                 <div class="personal">
                     <div class="edit">
-                        <p>{{ pet.name }}</p>
-                        <a href="{% url 'edit pet' username='Doncho' pet_slug=pet.slug %}">
+                        <p>{{ object.name }}</p>
+                        <a href="{% url 'edit pet' username='Doncho' pet_slug=object.slug %}">
                             <img class="edit-img" src="{% static 'images/edit-pen-icon-6.jpg' %}" alt="edit button">
                         </a>
-                        <a href="{% url 'delete pet' username='Doncho' pet_slug=pet.slug %}">
+                        <a href="{% url 'delete pet' username='Doncho' pet_slug=object.slug %}">
                             <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
                         </a>
                     </div>
                     <div class="data">
-                        <span>{{ pet.petphoto_set.count }}</span>
+                        <span>{{ object.petphoto_set.count }}</span>
                         <p>photos</p>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="pet-posts">
-            {% include 'partials/pet_photos_list.html' with photo_list=pet.petphoto_set.all %}
+            {% include 'partials/pet_photos_list.html' with photo_list=object.petphoto_set.all %}
         </div>
     </div>
 {% endblock %}

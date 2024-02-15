@@ -36,13 +36,6 @@ class PetPhoto(models.Model):
 
     MAX_LOCATION_LENGTH = 30
 
-    # def delete(self, using=None, keep_parents=False):
-    #     self.is_deleted = True
-
-    is_deleted = models.BooleanField(
-        default=False,
-    )
-
     photo = models.ImageField(
         upload_to='pet_photos/',
         blank=False,

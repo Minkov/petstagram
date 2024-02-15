@@ -8,3 +8,49 @@
 @import './petProfile.css';
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 
+
+/* Pagination styles */
+.pagination {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.step-links-buttons a,
+.step-links-buttons span.current {
+    font-size: 20px;
+    color: white;
+    padding: 10px 15px;
+    margin: 0 5px;
+    text-decoration: none;
+    background-color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.step-links-buttons a:hover {
+    background-color: #3498db;
+}
+
+.step-links-buttons span.current {
+    cursor: default;
+    text-shadow: none;
+}
+
+.step-links-buttons a:first-child,
+.step-links-buttons a:last-child {
+    margin: 0;
+}
+
+.step-links-buttons {
+    display: flex;
+    text-shadow: none;
+}
+
+.step-links-buttons a.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}

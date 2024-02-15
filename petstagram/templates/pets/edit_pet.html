@@ -6,14 +6,14 @@
 
     <div class="edit-delete edit-photo">
         <h2>Edit Pet</h2>
-        <form action="{% url 'edit pet' username=username pet_slug=pet.slug %}" method="post">
-            {{ pet_form.as_p }}
+        <form action="{% url 'edit pet' username=username pet_slug=object.slug %}" method="post">
+            {{ form.as_p }}
 
             <button class="edit-btn" type="submit">Edit</button>
 
             {% csrf_token %}
         </form>
         <h3>Current image: </h3>
-        <img height="50" src="{{ pet.pet_photo }}" alt="Image of {{ pet.name }}">
+        <img height="50" src="{{ object.pet_photo }}" alt="Image of {{ object.name }}">
     </div>
 {% endblock %}

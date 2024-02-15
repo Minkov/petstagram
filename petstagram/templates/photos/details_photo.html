@@ -5,14 +5,15 @@
 {% block main_content %}
     <div class="container">
         <div class="col-9">
-            {% include 'partials/pet_photo_list_item.html' with photo=pet_photo %}
+            <a href="{% url 'edit photo' pk=object.pk %}">Edit</a>
+            {% include 'partials/pet_photo_list_item.html' with photo=object %}
 
-            <p class="pet-details">{{ pet_photo.description }}</p>
+            <p class="pet-details">{{ object.description }}</p>
 
-            <h5 class="postTime">{{ pet_photo.created_at }}</h5>
+            <h5 class="postTime">{{ object.created_at }}</h5>
 
             <div class="comments">
-                {% for comment in pet_photo.photocomment_set.all %}
+                {% for comment in object.photocomment_set.all %}
                     <div class="top">
                         <div class="userDetails">
                             <div class="comment-data">
@@ -24,7 +25,7 @@
                                     </div>
                                 </div>
                                 <p>
-                                    <a href="{% url 'details profile' pk=1 %}">Steven Ivanov</a>
+                                    <a href="{% url 'details profile' pk=1 %}">Doncho</a>
                                     <!-- User Comment -->
                                     - {{ comment.text }}
                                 </p>
@@ -37,6 +38,5 @@
             <!-- End Comments Section -->
         </div>
 
-    </div>
     </div>
 {% endblock %}
