@@ -1,10 +1,15 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.text import slugify
 
+from petstagram.core.models import IHaveUser
 
-class Pet(models.Model):
+UserModel = get_user_model()
+
+
+class Pet(IHaveUser, models.Model):
     MAX_NAME_LENGTH = 30
-    MAX_PET_PHOTO_LENGTH=500
+    MAX_PET_PHOTO_LENGTH = 500
 
     name = models.CharField(
         max_length=MAX_NAME_LENGTH,
@@ -29,6 +34,9 @@ class Pet(models.Model):
         blank=True,
         editable=False,  # Readonly, only in the Django App, not in the DB
     )
+
+    # user = models.ForeignKey(UserModel,
+    #                          on_delete=models.RESTRICT)
 
     def __str__(self):
         return self.name

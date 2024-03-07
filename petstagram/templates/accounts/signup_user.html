@@ -2,22 +2,28 @@
 
 {% load static %}
 
+{% load filters %}
+
 {% block main_content %}
 
     <div class="login-register-div">
         <div class="login-register-box">
             <h1>Petstagram</h1>
 
-            <form action="">
-                <input type="text" placeholder="Username">
+            <form action="{% url 'signup user' %}" method="post">
+                <p>
+                    {{ form.email|placeholder:"Email" }}
+                </p>
+                <p>
+                    {{ form.password1|placeholder:"Password" }}
+                </p>
 
-                <input type="email" placeholder="Email">
-
-                <input type="password" placeholder="Password">
-
-                <input type="password" placeholder="Repeat Password">
+                <p>
+                    {{ form.password2|placeholder:"Confirm password" }}
+                </p>
 
                 <button type="submit">Register</button>
+                {% csrf_token %}
             </form>
 
         </div>

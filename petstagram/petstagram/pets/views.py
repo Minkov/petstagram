@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
+from django.core import exceptions
 
 from django.views import generic as views
+from django.contrib.auth import mixins as auth_mixin
 
+from petstagram.accounts.views import OwnerRequiredMixin
 from petstagram.pets.forms import PetCreateForm, PetEditForm, PetDeleteForm
 from petstagram.pets.models import Pet
 
 
-class PetCreateView(views.CreateView):
+class PetCreateView(auth_mixin.LoginRequiredMixin, views.CreateView):
     # `model` and `fields` in `CreateView` are only needed to
     # create a form with `modelform_factory`
 
@@ -23,8 +26,14 @@ class PetCreateView(views.CreateView):
             "pet_slug": self.object.slug,
         })
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
 
-class PetEditView(views.UpdateView):
+        form.instance.user = self.request.user
+        return form
+
+
+class PetEditView(OwnerRequiredMixin, views.UpdateView):
     model = Pet  # queryset = Pet.objects.all()
     form_class = PetEditForm
     template_name = "pets/edit_pet.html"
@@ -44,7 +53,7 @@ class PetEditView(views.UpdateView):
         })
 
 
-class PetDetailView(views.DetailView):
+class PetDetailView(auth_mixin.LoginRequiredMixin, views.DetailView):
     # TODO: fix bad queries
     # model = Pet  # or `queryset`
     queryset = Pet.objects.all() \
@@ -57,7 +66,7 @@ class PetDetailView(views.DetailView):
     slug_url_kwarg = "pet_slug"  # name of param in URL
 
 
-class PetDeleteView(views.DeleteView):
+class PetDeleteView(OwnerRequiredMixin, auth_mixin.LoginRequiredMixin, views.DeleteView):
     model = Pet
     form_class = PetDeleteForm
 

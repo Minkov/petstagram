@@ -4,64 +4,67 @@
 
 {% block main_content %}
     <div class="profile">
-        <!-- Start Profile Personal Data Section -->
         <div class="profile-data">
             <div class="profile_img">
                 <div class="image">
-                    <!-- Profile Image -->
-                    <img src="{% static 'images/person.png' %}" alt="img8"/>
+                    {% if object.profile_picture %}
+                        <img src="{{ object.profile_picture }}" alt="img8"/>
+                    {% else %}
+                        <img src="{% static 'images/person.png' %}" alt="img8"/>
+                    {% endif %}
                 </div>
             </div>
             <div class="personal">
                 <div class="edit">
-                    <!-- User Username -->
-                    <p>d_kalaydzhiev</p>
+                    <p>{{ profile.user.email }}</p>
 
-                    <!-- IF the viewer is the owner of the profile -->
-                    <!-- Link to Edit Profile Page -->
-                    <a href="#">
-                        <img
-                                class="edit-img"
-                                src="{% static 'images/edit-pen-icon-6.jpg' %}"
-                                alt="edit button"
-                        />
-                    </a>
+                    {% if object.pk == request.user.pk %}
+                        <a href="{% url 'edit profile' pk=object.pk %}">
+                            <img
+                                    class="edit-img"
+                                    src="{% static 'images/edit-pen-icon-6.jpg' %}"
+                                    alt="edit button"
+                            />
+                        </a>
 
-                    <!-- Link to Delete Profile Page -->
-                    <a href="">
-                        <img
-                                class="bin-img"
-                                src="{% static 'images/icon-remove-22.jpg' %}"
-                                alt="bin button"
-                        />
-                    </a>
-                    <!-- End IF the viewer is the owner of the profile -->
+                        <a href="{% url 'delete profile' pk=object.pk %}">
+                            <img
+                                    class="bin-img"
+                                    src="{% static 'images/icon-remove-22.jpg' %}"
+                                    alt="bin button"
+                            />
+                        </a>
+                    {% endif %}
                 </div>
                 <div class="data">
                     <!-- Total Number of Photos by the User -->
+                    {# TODO: Fix this #}
                     <span>4</span>
                     <p>photos</p>
 
                     <!-- Total Number of Pets owned by the User -->
+                    {# TODO: Fix this #}
                     <span>7</span>
                     <p>pets</p>
 
                     <!-- Total Number of Likes for the User -->
+                    {# TODO: Fix this #}
                     <span>436</span>
                     <p>likes</p>
                 </div>
-                <!-- User First and Last Name IF Added -->
-                <h3 class="names">Diyan Kalaydziev</h3>
+                {% if object.full_name %}
+                    <h3 class="names">{{ object.full_name }}</h3>
+                {% endif %}
 
-                <!-- User Email Address -->
-                <p class="email">d.denov@gmail.com</p>
+                {% if object.date_of_birth %}
+                    {{ object.date_of_birth }}
+                {% endif %}
 
-                <!-- User Gender IF Added -->
-                <p class="gender">Male</p>
+                <p class="email">{{ object.user.email }}</p>
             </div>
         </div>
-        <!-- End Profile Personal Data Section -->
 
+        {# TODO: Fix this #}
         <!-- Start Pets Data Section -->
         <div class="pets">
             <div class="statuses">

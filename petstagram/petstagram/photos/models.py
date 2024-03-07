@@ -1,8 +1,11 @@
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
 from django.core.validators import MinLengthValidator, MaxLengthValidator, BaseValidator
 from django.db import models
 
 from petstagram.pets.models import Pet
+
+UserModel = get_user_model()
 
 
 def random_validator(value):
@@ -61,8 +64,6 @@ class PetPhoto(models.Model):
         blank=True,
     )
 
-    pets = models.ManyToManyField(Pet)
-
     created_at = models.DateTimeField(
         auto_now_add=True,  # Done only on `create`
     )
@@ -70,3 +71,8 @@ class PetPhoto(models.Model):
     modified_at = models.DateTimeField(
         auto_now=True,  # On every save
     )
+
+    pets = models.ManyToManyField(Pet)
+
+    user = models.ForeignKey(UserModel,
+                             on_delete=models.RESTRICT)

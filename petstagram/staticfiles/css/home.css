@@ -449,3 +449,11 @@ div.footer {
     color: #ff0000;
 }
 
+.button {
+    background-color: white;
+    border: none;
+    font-size: 22px;
+    margin: 2.5px 0 0 8px;
+    padding: 0;
+    cursor: pointer;
+}

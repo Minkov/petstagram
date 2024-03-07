@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load filters %}
 
 {% load static %}
 
@@ -7,17 +8,16 @@
         <div class="login-register-box">
             <h1>Petstagram</h1>
 
-            <form action="#">
+            <form action="{% url 'signin user' %}?next={{ next }}" method="post">
                 <p>
-                    <label for="id_username">Username:</label>
-                    <input type="text" placeholder="Username">
+                    {{ form.username|placeholder:"Email" }}
                 </p>
                 <p>
-                    <label for="id_password">Password:</label>
-                    <input type="password" placeholder="Password">
+                    {{ form.password|placeholder:"Password" }}
                 </p>
-
                 <button type="submit">Log in</button>
+
+                {% csrf_token %}
             </form>
 
         </div>

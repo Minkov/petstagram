@@ -1,20 +1,20 @@
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
 from petstagram.accounts.views import \
-    signup_user, signin_user, \
-    details_profile, delete_profile, \
-    edit_profile, signout_user
+    SignInUserView, SignUpUserView, signout_user, \
+    ProfileDetailsView, ProfileUpdateView, ProfileDeleteView
 
 urlpatterns = (
-    path("signup/", signup_user, name="signup user"),
-    path("signin/", signin_user, name="signin user"),
+    path("signup/", SignUpUserView.as_view(), name="signup user"),
+    path("signin/", SignInUserView.as_view(), name="signin user"),
     path("signout/", signout_user, name="signout user"),
 
     path(
         "profile/<int:pk>/", include([
-            path("", details_profile, name="details profile"),
-            path("edit/", edit_profile, name="edit profile"),
-            path("delete/", delete_profile, name="delete profile")
+            path("", ProfileDetailsView.as_view(), name="details profile"),
+            path("edit/", ProfileUpdateView.as_view(), name="edit profile"),
+            path("delete/", ProfileDeleteView.as_view(), name="delete profile")
         ]),
     )
 )
