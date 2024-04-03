@@ -5,7 +5,7 @@ UserModel = get_user_model()
 
 
 class IHaveUser(models.Model):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         UserModel,
         on_delete=models.RESTRICT,
     )

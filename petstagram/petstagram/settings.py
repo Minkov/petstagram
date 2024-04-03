@@ -111,7 +111,7 @@ USE_I18N = True
 USE_TZ = True
 
 # URL prefix in the client
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 # Directories on the file system
 STATICFILES_DIRS = (
