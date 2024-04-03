@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="35370f6e-7f4b-4b94-8271-1508bdc887d1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petstagram/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,34 +38,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.petstagram.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_IndexView.IndexViewTests.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_get_create__when_logged_in_user__expect_200_and_correct_template.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_anonymous_user__expect_302_with_redirect_to_login.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_logged_in_user__expect_302_with_correct_redirect_and_created_pet_with_correct_slug.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_not_owner__expect_302_with_redirect_to_home.executor&quot;: &quot;Run&quot;,
-    &quot;Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_owner__expect_200_with_correct_pet_and_template.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/doncho/repos/softuni/petstagram/petstagram/tests/helpers&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.project&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.petstagram.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_IndexView.IndexViewTests.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_get_create__when_logged_in_user__expect_200_and_correct_template.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_anonymous_user__expect_302_with_redirect_to_login.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_logged_in_user__expect_302_with_correct_redirect_and_created_pet_with_correct_slug.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_not_owner__expect_302_with_redirect_to_home.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_owner__expect_200_with_correct_pet_and_template.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/doncho/repos/softuni/petstagram/petstagram/tests/helpers",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.project",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/helpers" />
@@ -246,7 +251,7 @@
       <workItem from="1708011728744" duration="14043000" />
       <workItem from="1708358186216" duration="30000" />
       <workItem from="1709827623524" duration="12920000" />
-      <workItem from="1712155742295" duration="9818000" />
+      <workItem from="1712155742295" duration="10130000" />
     </task>
     <servers />
   </component>
