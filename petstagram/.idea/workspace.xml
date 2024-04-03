@@ -5,34 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35370f6e-7f4b-4b94-8271-1508bdc887d1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/petstagram/accounts/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petstagram/accounts/migrations/0002_petstagramuser_groups_petstagramuser_is_superuser_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petstagram/accounts/migrations/0003_alter_petstagramuser_managers_and_more.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petstagram/accounts/migrations/0004_profile.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petstagram/common/migrations/0003_photocomment_user_photolike_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petstagram/pets/migrations/0004_pet_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petstagram/pets/migrations/0005_alter_pet_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/petstagram/photos/migrations/0006_petphoto_user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/8b855206-8f75-4ad3-97c7-e488f17a011e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8b855206-8f75-4ad3-97c7-e488f17a011e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/petstagram/accounts/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/accounts/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/accounts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/petstagram/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/accounts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/common/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/common/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/pets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/pets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petstagram/common/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/common/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petstagram/core/view_mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/core/view_mixins.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/petstagram/pets/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/pets/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/photos/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/photos/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/petstagram/photos/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/photos/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/petstagram/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staticfiles/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/staticfiles/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/details_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/details_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/edit_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/signin_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/signin_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/accounts/signup_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/accounts/signup_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/partials/layout/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/partials/layout/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/petstagram/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/petstagram/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +49,22 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.petstagram.executor": "Debug",
+    "Django Server.petstagram.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_IndexView.IndexViewTests.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_get_create__when_logged_in_user__expect_200_and_correct_template.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_anonymous_user__expect_302_with_redirect_to_login.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_logged_in_user__expect_302_with_correct_redirect_and_created_pet_with_correct_slug.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_not_owner__expect_302_with_redirect_to_home.executor": "Run",
+    "Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_owner__expect_200_with_correct_pet_and_template.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "django.template.preview.state": "SHOW_EDITOR",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/doncho/repos/softuni/petstagram/petstagram",
+    "last_opened_file_path": "/Users/doncho/repos/softuni/petstagram/petstagram/tests/helpers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,7 +74,117 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/helpers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Django Server.petstagram">
+    <configuration name="Test: tests.pets.views.tests_IndexView.IndexViewTests" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="petstagram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="tests.pets.views.tests_IndexView.IndexViewTests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="petstagram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="tests.pets.views.tests_PetCreateView.PetCreateViewTests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: tests.pets.views.tests_PetEditView.PetEditViewTests" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="petstagram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="tests.pets.views.tests_PetEditView.PetEditViewTests" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_not_owner__expect_302_with_redirect_to_home" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="petstagram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_not_owner__expect_302_with_redirect_to_home" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_owner__expect_200_with_correct_pet_and_template" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="petstagram" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_owner__expect_200_with_correct_pet_and_template" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="petstagram" type="Python.DjangoServer" factoryName="Django server">
       <module name="petstagram" />
       <option name="ENV_FILES" value="" />
@@ -94,7 +195,6 @@
         <env name="DJANGO_SETTINGS_MODULE" value="petstagram.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.9 (petstagram)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -120,11 +220,20 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Django tests.Test: tests.pets.views.tests_IndexView.IndexViewTests" />
+        <item itemvalue="Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests" />
+        <item itemvalue="Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_owner__expect_200_with_correct_pet_and_template" />
+        <item itemvalue="Django tests.Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_not_owner__expect_302_with_redirect_to_home" />
+        <item itemvalue="Django tests.Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.14475.56" />
+        <option value="bundled-python-sdk-09665e90c3a7-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.15026.15" />
       </set>
     </attachedChunks>
   </component>
@@ -145,6 +254,7 @@
       <workItem from="1708011728744" duration="14043000" />
       <workItem from="1708358186216" duration="30000" />
       <workItem from="1709827623524" duration="12920000" />
+      <workItem from="1712155742295" duration="8177000" />
     </task>
     <servers />
   </component>
@@ -165,11 +275,56 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/.venv/lib/python3.9/site-packages/django/views/generic/edit.py</url>
+          <line>151</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/petstagram/pets/views.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/petstagram/accounts/views.py</url>
           <line>15</line>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/petstagram/accounts/views.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/petstagram/common/views.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/petstagram/common/views.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/petstagram/common/views.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/.venv/lib/python3.9/site-packages/django/core/mail/__init__.py</url>
+          <line>75</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_PetCreateView_PetCreateViewTests_test_get_create__when_logged_in_user__expect_200_and_correct_template.coverage" NAME="Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_get_create__when_logged_in_user__expect_200_and_correct_template Coverage Results" MODIFIED="1712157572748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_PetCreateView_PetCreateViewTests.coverage" NAME="Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests Coverage Results" MODIFIED="1712159056838" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_PetEditView_PetEditViewTests_test_get_edit__when_owner__expect_200_with_correct_pet_and_template.coverage" NAME="Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_owner__expect_200_with_correct_pet_and_template Coverage Results" MODIFIED="1712160885823" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_PetCreateView_PetCreateViewTests_test_post_create__when_anonymous_user__expect_302_with_redirect_to_login.coverage" NAME="Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_anonymous_user__expect_302_with_redirect_to_login Coverage Results" MODIFIED="1712158020433" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_PetCreateView_PetCreateViewTests_test_post_create__when_logged_in_user__expect_302_with_correct_redirect_and_created_pet_with_correct_slug.coverage" NAME="Test: tests.pets.views.tests_PetCreateView.PetCreateViewTests.test_post_create__when_logged_in_user__expect_302_with_correct_redirect_and_created_pet_with_correct_slug Coverage Results" MODIFIED="1712158576118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_PetEditView_PetEditViewTests_test_get_edit__when_not_owner__expect_302_with_redirect_to_home.coverage" NAME="Test: tests.pets.views.tests_PetEditView.PetEditViewTests.test_get_edit__when_not_owner__expect_302_with_redirect_to_home Coverage Results" MODIFIED="1712160053962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_IndexView_IndexViewTests.coverage" NAME="Test: tests.pets.views.tests_IndexView.IndexViewTests Coverage Results" MODIFIED="1712162509220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/petstagram$Test__tests_pets_views_tests_PetEditView_PetEditViewTests.coverage" NAME="Test: tests.pets.views.tests_PetEditView.PetEditViewTests Coverage Results" MODIFIED="1712160895564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

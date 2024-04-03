@@ -22,7 +22,7 @@ class PetCreateView(auth_mixin.LoginRequiredMixin, views.CreateView):
 
     def get_success_url(self):
         return reverse("details pet", kwargs={
-            "username": "Doncho",
+            "username": self.object.user.email,
             "pet_slug": self.object.slug,
         })
 
@@ -54,7 +54,6 @@ class PetEditView(OwnerRequiredMixin, views.UpdateView):
 
 
 class PetDetailView(auth_mixin.LoginRequiredMixin, views.DetailView):
-    # TODO: fix bad queries
     # model = Pet  # or `queryset`
     queryset = Pet.objects.all() \
         .prefetch_related("petphoto_set") \

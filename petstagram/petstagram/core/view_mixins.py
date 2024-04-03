@@ -1,4 +1,5 @@
 from django.contrib.auth import mixins as auth_mixins
+from django.core import exceptions
 
 
 class OwnerRequiredMixin(auth_mixins.LoginRequiredMixin):

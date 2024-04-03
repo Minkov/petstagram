@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.views import LoginView
+from django.core.mail import send_mail
 from django.shortcuts import redirect
 
 from petstagram.common.models import PhotoLike
@@ -21,7 +22,16 @@ from petstagram.photos.models import PetPhoto
 #     }
 
 class IndexView(views.ListView):
+    # send_mail(
+    #     subject="It works!",
+    #     message="It works without HTML",
+    #     from_email="doncho@ambitioned.com",
+    #     recipient_list=["jojobod584@centerf.com"],
+    #     html_message="<h1>It works with HTML!</h1>",
+    #     fail_silently=False,
+    # )
     queryset = PetPhoto.objects.all() \
+        .order_by("-created_at") \
         .prefetch_related("pets") \
         .prefetch_related("photolike_set")
 
