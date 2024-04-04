@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 
 from django.urls import reverse_lazy
+from petstagram.setting_configs.db_settings import DATABASES
 
 # `BASE_DIR` should always point to the `manage.py` directory
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -12,7 +13,7 @@ DEBUG = os.environ.get("DEBUG", "1") == "1"
 # DEBUG=0 in environment
 # DEBUG="0" in python, and "0" is truthy
 
-# ALLOWED_HOSTS=localhost 127.0.0.1
+# Example env variable: `ALLOWED_HOSTS=localhost 127.0.0.1`
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(" ")
 CSRF_TRUSTED_ORIGINS = [f'https://{host}' for host in ALLOWED_HOSTS]
 
@@ -66,25 +67,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "petstagram.wsgi.application"
-
-# if DEBUG:
-#     DATABASES = {
-#         "default": {
-#             "ENGINE": "django.db.backends.sqlite3",
-#             "NAME": BASE_DIR / "db.sqlite3",
-#         }
-#     }
-# else:
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("POSTGRES_DB"),
-        "USER": os.environ.get("POSTGRES_USER"),
-        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
-        "HOST": os.environ.get("POSTGRES_HOST"),
-        "PORT": os.environ.get("POSTGRES_PORT"),
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
